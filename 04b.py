@@ -17,7 +17,7 @@ def mark_number(boards: list[list[list[str]]], number: str) -> None:
                 if item == number:
                     line[index] = '-1'
 
-def check_for_bingo(boards: list[list[list[str]]], wins: list[(int,int)]) -> None:
+def check_for_bingo(boards: list[list[list[str]]], number: str, wins: list[(int,int)]) -> None:
     already_won = [item[0] for item in wins]
     for board_index, board in enumerate(boards):
         if board_index in already_won:
@@ -58,5 +58,5 @@ for board_section in board_data:
 wins = []
 for number in lottery.split(','):
     mark_number(boards, number)
-    check_for_bingo(boards, wins)
+    check_for_bingo(boards, number, wins)
 print(wins[len(wins) - 1][1])
